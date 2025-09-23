@@ -12,7 +12,7 @@ import BusManagement from "./BusManagement";
 import RouteManagement from "./RouteManagement";
 import AnnouncementsPage from "./AnnouncementsPage";
 
-
+const API_URL = 'https://whereismybus-1.onrender.com';
 
 
 const Dashboard = ({ buses, routes, announcements, setBuses, setRoutes, setAnnouncements, onLogout }) => {
@@ -22,7 +22,7 @@ const Dashboard = ({ buses, routes, announcements, setBuses, setRoutes, setAnnou
     useEffect(() => {
         const loadBuses = async () => {
             try {
-                const res = await fetch('http://localhost:4000/api/buses', { headers: { Authorization: `Bearer ${localStorage.getItem('token') || ''}` }});
+                const res = await fetch(`${API_URL}/api/buses`, { headers: { Authorization: `Bearer ${localStorage.getItem('token') || ''}` }});
                 if (!res.ok) return;
                 const data = await res.json();
                 // Map backend buses to dashboard bus shape if needed
@@ -49,7 +49,7 @@ const Dashboard = ({ buses, routes, announcements, setBuses, setRoutes, setAnnou
     useEffect(() => {
         const interval = setInterval(async () => {
             try {
-                const res = await fetch('http://localhost:4000/api/live-buses');
+                const res = await fetch(`${API_URL}/api/live-buses`);
                 if (!res.ok) return;
                 const live = await res.json();
                 const liveSet = new Set(live.map(l => l.busId));

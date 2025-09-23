@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+const API_URL = 'https://whereismybus-1.onrender.com';
 
 const LoginPage = ({ onLogin }) => {
   const handleSubmit = async (e) => {
@@ -7,11 +8,12 @@ const LoginPage = ({ onLogin }) => {
     const email = e.target.username.value;
     const password = e.target.password.value;
     try {
-      const res = await fetch('http://localhost:4000/api/auth/login', {
+      const res = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
+
       const data = await res.json();
       if (!res.ok) {
         alert(data?.error || 'Login failed');

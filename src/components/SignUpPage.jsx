@@ -6,11 +6,34 @@ const SignUpPage = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async(data) => {
     console.log("Form Data:", data);
     alert(`Welcome ${data.name}, your account has been created!`);
+    
+    try {
+        const res = await fetch("http://localhost:4000/api/auth/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        });
+    
+        const response = await res.json();
+        console.log("Data:", response);
+        reset()
+    
+        // Navigate if successful
+        // if (response.message === "User logged successfully") {
+        //     navigate('/home');
+        // }
+    } catch (err) {
+        console.error("Error:", err);
+    }
+
   };
 
   return (

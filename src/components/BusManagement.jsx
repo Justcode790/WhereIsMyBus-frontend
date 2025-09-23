@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from 'react'
-
+const API_URL = 'https://whereismybus-1.onrender.com';
 // Bus Management Page
 const BusManagement = ({ buses, setBuses, routes }) => {
     const [error, setError] = useState("");
@@ -13,7 +13,7 @@ const BusManagement = ({ buses, setBuses, routes }) => {
             return;
         }
         try {
-            const res = await fetch('http://localhost:4000/api/buses', {
+            const res = await fetch(`${API_URL}/api/buses`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token') || ''}` },
                 body: JSON.stringify({

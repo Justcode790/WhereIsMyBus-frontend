@@ -8,7 +8,7 @@ const DriverPanel = () => {
   const [isTracking, setIsTracking] = useState(false);
   const [locked, setLocked] = useState(false);
   const intervalRef = useRef(null);
-
+const API_URL = 'https://whereismybus-1.onrender.com';
   const { setLocation } = useContext(LocationContext);
 
   const {routes} = useContext(RouteContext)
@@ -19,7 +19,7 @@ const DriverPanel = () => {
     if (id.length === 4) {
       (async () => {
         try {
-          const res = await fetch(`http://localhost:4000/api/bus-lookup/${id}`);
+          const res = await fetch(`${API_URL}/api/bus-lookup/${id}`);
           if (res.ok) {
             const data = await res.json();
             setRouteId(data.routeId);

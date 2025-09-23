@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { RouteContext } from "./RouteProvider";
-
+const API_URL = 'https://whereismybus-1.onrender.com';
 const RouteManagement = () => {
   const { routes, setRoutes } = useContext(RouteContext);
   const [selectedRoute, setSelectedRoute] = useState(null);
@@ -18,7 +18,7 @@ const RouteManagement = () => {
   useEffect(() => {
     const fetchRoutes = async () => {
       try {
-        const res = await fetch("http://localhost:4000/api/routes", { headers: { Authorization: `Bearer ${localStorage.getItem('token') || ''}` } });
+        const res = await fetch(`${API_URL}/api/routes`, { headers: { Authorization: `Bearer ${localStorage.getItem('token') || ''}` } });
         const data = await res.json();
         console.log("Data from backEnd:",data)
         const formatted = data.map(r => ({
