@@ -48,7 +48,7 @@ const API_URL = 'https://whereismybus-1.onrender.com';
         console.log(`Sending location: ${latitude}, ${longitude}`);
 
         try {
-          const res = await fetch("http://localhost:4000/api/update-location", {
+          const res = await fetch(`${API_URL}/api/update-location`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -84,7 +84,7 @@ const API_URL = 'https://whereismybus-1.onrender.com';
     }
 
     try {
-      await fetch("http://localhost:4000/api/register-bus", {
+      await fetch(`${API_URL}/api/register-bus`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ busId: busId.trim().toUpperCase(), routeId, busNumber: busId.trim().toUpperCase() }),
@@ -111,7 +111,7 @@ const API_URL = 'https://whereismybus-1.onrender.com';
   return (
     <div className="relative min-h-screen flex items-center justify-center font-sans bg-contain bg-center bg-no-repeat "
 
-     style={{ backgroundImage: "url('./Screenshot_2025-09-10_195914-removebg-preview(1).png')" }}
+     style={{ backgroundImage: "url('https://res.cloudinary.com/debc5aznw/image/upload/v1758737413/scrapbook/r3kkyfpvzrc1fghqgfen.png')" }}
 
     >
      
