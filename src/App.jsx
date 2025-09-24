@@ -70,6 +70,8 @@ import Dashboard from './components/Dashboard';
 import UserSide from './components/UserSide';
 import Vahan from './components/Vahan';
 
+const API_URL = 'https://whereismybus-1.onrender.com';
+
 import { initialBuses, initialRoutes } from './data/mockData';
 import SignUpPage from './components/SignUpPage';
 import DriverPanel from './components/DriverPanel';
@@ -120,7 +122,7 @@ export default function App() {
   useEffect(() => {
     const loadRoutes = async () => {
       try {
-        const res = await fetch('http://localhost:4000/api/routes', { headers: { Authorization: `Bearer ${localStorage.getItem('token') || ''}` }});
+        const res = await fetch(`${API_URL}/api/routes`, { headers: { Authorization: `Bearer ${localStorage.getItem('token') || ''}` }});
         if (!res.ok) return;
         const data = await res.json();
         setRoutes(data);
