@@ -30,7 +30,7 @@ const LoginPage = ({ onLogin }) => {
   return (
     <div
       className="min-h-screen flex items-center justify-center font-sans bg-cover bg-center"
-      style={{ backgroundImage: "url('./people-waiting-bus-bus-stop.png')" }} 
+      style={{ backgroundImage: "url('https://res.cloudinary.com/debc5aznw/image/upload/v1758737286/scrapbook/dfj1uhrdyir7iauk2ivv.png')" }} 
     >
       <div className="bg-white/50 p-10 rounded-lg shadow-xl w-full max-w-md backdrop-blur-sm">
         <div className="text-center mb-8">

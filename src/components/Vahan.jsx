@@ -6,7 +6,7 @@ const Vahan = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
       <div className="flex flex-col items-center space-y-6">
         <img 
-          src="./Screenshot_2025-09-10_195914-removebg-preview.png" 
+          src="https://res.cloudinary.com/debc5aznw/image/upload/v1758737413/scrapbook/r3kkyfpvzrc1fghqgfen.png" 
           alt="Vahan"
           className="mb-6"
         />  
