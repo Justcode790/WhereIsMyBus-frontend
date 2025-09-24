@@ -92,7 +92,8 @@ const BusManagement = ({ buses, setBuses, routes }) => {
                                 >
                                     <td className="p-2 font-mono">{bus.shortId || '-'}</td>
                                     <td className="p-2 font-mono">{bus.registration}</td>
-                                    <td className="p-2">{routeIdToName.get(bus.routeId) || bus.routeId}</td>
+                                    <td className="p-2">{bus.routeName || '-'}</td>
+
                                     <td className="p-2">
                                         <span className={`px-2 py-1 text-xs rounded-full ${
                                             bus.status === 'On Time' ? 'bg-green-100 text-green-800' :
@@ -108,19 +109,19 @@ const BusManagement = ({ buses, setBuses, routes }) => {
             </div>
             <div className="bg-white p-6 rounded-lg shadow space-y-6">
                 {selectedBus && (
-                    <div>
-                        <div className="flex items-start justify-between mb-2">
-                            <h2 className="text-xl font-bold">Bus Details</h2>
-                            <button onClick={() => setSelectedBus(null)} className="text-sm text-blue-600 hover:underline">Clear</button>
+                        <div>
+                            <div className="flex items-start justify-between mb-2">
+                                <h2 className="text-xl font-bold">Bus Details</h2>
+                                <button onClick={() => setSelectedBus(null)} className="text-sm text-blue-600 hover:underline">Clear</button>
+                            </div>
+                            <div className="text-sm text-gray-700 space-y-1">
+                                <p><span className="font-semibold">Bus ID:</span> {selectedBus.shortId || '-'}</p>
+                                <p><span className="font-semibold">Registration:</span> {selectedBus.registration || '-'}</p>
+                                <p><span className="font-semibold">Route:</span> {selectedBus.routeName || '-'}</p>
+                                <p><span className="font-semibold">Status:</span> {selectedBus.status}</p>
+                            </div>
                         </div>
-                        <div className="text-sm text-gray-700 space-y-1">
-                            <p><span className="font-semibold">Bus ID:</span> {selectedBus.shortId || '-'}</p>
-                            <p><span className="font-semibold">Registration:</span> {selectedBus.registration || '-'}</p>
-                            <p><span className="font-semibold">Route:</span> {routeIdToName.get(selectedBus.routeId) || selectedBus.routeId}</p>
-                            <p><span className="font-semibold">Status:</span> {selectedBus.status}</p>
-                        </div>
-                    </div>
-                )}
+                    )}
 
                 <h2 className="text-xl font-bold">Add New Bus</h2>
                 <form onSubmit={handleAddBus}>
