@@ -10,7 +10,7 @@ const SignUpPage = () => {
     formState: { errors },
     reset
   } = useForm();
-const navigate = useNavigate();
+  const navigate = useNavigate();
   const onSubmit = async(data) => {
     console.log("Form Data:", data);
     alert(`Welcome ${data.name}, your account has been created!`);
@@ -25,8 +25,10 @@ const navigate = useNavigate();
         });
     
         const response = await res.json();
-        console.log("Data:", response);
-        navigate("/login");
+        if (res.ok) {
+          navigate("/login");
+          reset();
+        }
         reset()
         
 
