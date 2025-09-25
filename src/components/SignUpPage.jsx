@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 const API_URL = 'https://whereismybus-1.onrender.com';
 
@@ -9,7 +10,7 @@ const SignUpPage = () => {
     formState: { errors },
     reset
   } = useForm();
-
+const navigate = useNavigate();
   const onSubmit = async(data) => {
     console.log("Form Data:", data);
     alert(`Welcome ${data.name}, your account has been created!`);
@@ -25,7 +26,10 @@ const SignUpPage = () => {
     
         const response = await res.json();
         console.log("Data:", response);
+        navigate("/login");
         reset()
+        
+
     
         // Navigate if successful
         // if (response.message === "User logged successfully") {
