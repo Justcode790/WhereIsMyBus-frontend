@@ -1,5 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+const API_URL = 'https://whereismybus-1.onrender.com';
 
 const SignUpPage = () => {
   const {
@@ -14,7 +15,7 @@ const SignUpPage = () => {
     alert(`Welcome ${data.name}, your account has been created!`);
     
     try {
-        const res = await fetch("http://localhost:4000/api/auth/signup", {
+        const res = await fetch(`${API_URL}/api/auth/signup`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
